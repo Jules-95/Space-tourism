@@ -1,0 +1,524 @@
+/****************************
+ FONTS
+****************************/
+@font-face {
+  font-display: swap;
+  font-family: 'Bellefair';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/bellefair-v15-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/barlow-condensed-v13-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/barlow-v13-latin-regular.woff2') format('woff2');
+}
+
+/****************************
+ GLOBAL STYLES
+****************************/
+body {
+  background: #0B0D17 url("../img/background-m.jpg") center/cover no-repeat;
+  min-height: 100vh;
+  color: #D0D6F9;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  
+}
+
+.container {
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+  max-width: 111rem;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/****************************
+ TYPOGRAPHY
+****************************/
+.pre-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.2rem;
+}
+
+h1 {
+  font-family: 'Bellefair', serif;
+  color: #fff;
+  font-weight: 400;
+  font-size: 8rem;
+}
+
+/****************************
+ HEADER
+****************************/
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  padding-top: 2.4rem;
+}
+
+/* --- Bouton burger --- */
+.burger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 2.4rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 50;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  width: 100%;
+  height: 0.3rem;
+  background: #D0D6F9;
+  transition: all 0.4s ease;
+}
+
+/* --- Animation du burger en croix --- */
+.burger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  background-color: #fff;
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: #fff;
+}
+
+/****************************
+ NAVIGATION MOBILE
+****************************/
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 70%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  padding: 12rem 3rem;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  z-index: 40;
+}
+
+.nav.open {
+  transform: translateX(0);
+}
+
+.nav-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.nav-item a {
+  font-family: 'Barlow Condensed', sans-serif;
+  color: #fff;
+  letter-spacing: 0.27rem;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.nav-item a span {
+  font-weight: 700;
+  margin-right: 0.8rem;
+}
+
+/****************************
+ HERO
+****************************/
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 38rem;
+  gap: 1.6rem;
+  padding-top: 4.8rem;
+}
+
+.btn-explore {
+  margin: 7rem 0 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+  height: 15rem;
+  background-color: #fff;
+  border-radius: 50%;
+  flex: 0 0 15rem;
+}
+
+.hero a {
+  font-family: 'Bellefair', serif;
+  font-weight: 400;
+  font-size: 2rem;
+  letter-spacing: 0.12rem;
+  color: #0B0D17;
+}
+
+/* ----------------------------------------------------------- */
+/* PAGE DESTINATION */
+/* ----------------------------------------------------------- */
+
+body.page-destination {
+  background-image: url("../img/background-desti-m.jpg") ;
+}
+
+/* ----------------------------------------------------------- */
+/* PAGE CREW */
+/* ----------------------------------------------------------- */
+
+body.page-crew {
+  background-image: url("../img/background-crew-m.jpg") ;
+}
+
+/* ----------------------------------------------------------- */
+/* PAGE TECHNOLOGY */
+/* ----------------------------------------------------------- */
+
+body.page-technology {
+  background-image: url("../img/background-techno-m.jpg") ;
+}
+
+
+
+/* Version tablette */
+
+@media (min-width: 768px) {
+
+ body {
+  background: #0B0D17 url("../img/background-t.jpg") center center / cover
+   no-repeat;
+}
+
+  /* 1️⃣  On cache le menu burger */
+  .burger {
+    display: none;
+  }
+
+  /* 2️⃣  Le header devient la référence pour positionner le fond blur */
+  header {
+    position: relative;
+    height: 9rem;
+    
+  }
+
+  /* 3️⃣  La nav visible, collée au bord droit, effet blur */
+   .nav {
+    position: absolute; 
+    transform: none;
+    width: auto; /* ✅ réinitialisation */
+    height: 100%;
+    padding: 0 5rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
+  /* 4️⃣  Les chiffres disparaissent */
+  .nav-item span {
+    display: none;
+  }
+
+  /* 5️⃣  Liste horizontale */
+  .nav-liste {
+    flex-direction: row;
+    gap: 3.7rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* 6️⃣  Liens */
+  .nav-item a {
+    font-size: 1.4rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    color: #fff;
+  }
+
+  /* Trait sous le lien actif */
+  .nav-item a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -3.5rem; 
+    left: 0;
+    right: 0;
+    height: 0.3rem;
+    background-color: #fff;
+  }
+
+  .hero {
+    max-width: 46.5rem;
+    padding-top: 10rem;
+  }
+
+  .pre-title {
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+  }
+
+  h1 {
+    font-size: 15rem;
+    margin-top: -3rem;
+    margin-bottom: -3rem;
+  }
+
+  .btn-explore {
+  margin: 12rem 0 8rem;
+  width: 24rem;
+  height: 24rem;
+  flex: 0 0 24rem;
+  }
+
+  .hero a {
+    font-size: 3.2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  .logo img {
+    content: url("../img/logo-big.svg");
+  }
+
+
+
+/* ----------------------------------------------------------- */
+/* PAGE DESTINATION */
+/* ----------------------------------------------------------- */
+
+body.page-destination {
+  background-image: url("../img/background-desti-t.jpg") ;
+}
+
+/* ----------------------------------------------------------- */
+/* PAGE CREW */
+/* ----------------------------------------------------------- */
+
+body.page-crew {
+  background-image: url("../img/background-crew-t.jpg") ;
+}
+
+/* ----------------------------------------------------------- */
+/* PAGE TECHNOLOGY */
+/* ----------------------------------------------------------- */
+
+body.page-technology {
+  background-image: url("../img/background-techno-t.jpg") ;
+}
+
+}
+
+
+
+@media (min-width: 1440px) {
+
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    background-image: url(../img/background-d.jpg); 
+  }
+
+  .pre-title {
+    font-size: 2.8rem;
+    letter-spacing: 0.47rem;
+  }
+
+  p {
+    font-size: 1.8rem;
+  }
+
+  .hero {
+    flex-direction: row;
+    max-width: 111rem;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: 15rem;
+    padding-bottom: 13rem;
+  }
+
+  .txt {
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 2.4rem;
+    text-align: left;
+  }
+
+.btn-explore {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2.4rem;
+  background-color: #fff;
+  color: #0B0D17;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27rem;
+  height: 27rem;
+  flex: 0 0 27rem;
+  font-family: 'Bellefair', serif;
+  font-size: 3.2rem;
+  letter-spacing: 0.2rem;
+  transition: transform 0.3s ease;
+  isolation: isolate; 
+}
+
+/* Cercle translucide pour le halo */
+.btn-explore::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.6s ease;
+  z-index: -1; 
+  will-change: transform;
+}
+
+/* Effet hover */
+.btn-explore:hover::before {
+  transform: scale(1.65);
+  opacity: 1;
+}
+
+/* HEADER */
+
+header {
+  margin-top: 4rem;
+}
+
+.nav {
+  left : 50%
+}
+
+.nav-liste {
+  gap : 4.8rem;
+}
+
+.nav-item {
+  font-size: 1.6rem;
+}
+
+.nav-item span {
+  display: inline;
+  margin-right: 1rem;
+}
+
+.nav-item a.active::before {
+    bottom: -3.4rem; 
+}
+
+.logo img {
+  transform: translateX(-15.4rem);
+}
+
+/* BEFORE header */
+header::before {
+  content: "";
+  position: absolute;
+  top: 50%; 
+  left: calc(50% - 50rem); 
+  width: 53rem; 
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%);
+  z-index: 100;
+}
+
+/* BEFORE nav hover */
+.nav-item a::before {
+  content: "";
+  position: absolute;
+  bottom: -3.4rem;
+  left: 0;
+  right: 0;
+  height: 0.3rem;
+  background-color: white;
+  opacity: 0.5;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Apparition au survol */
+.nav-item a:hover::before {
+  transform: scaleX(1);
+}
+
+/* Renforcement du active */
+.nav-item a.active::before {
+  background-color: #fff;
+  transform: scaleX(1);
+  opacity : 1;
+}
+
+/* ----------------------------------------------------------- */
+/* PAGE DESTINATION */
+/* ----------------------------------------------------------- */
+
+body.page-destination {
+  background-image: url("../img/background-desti-d.jpg");
+}
+
+/* ----------------------------------------------------------- */
+/* PAGE CREW */
+/* ----------------------------------------------------------- */
+
+body.page-crew {
+  background-image: url("../img/background-crew-d.jpg") ;
+}
+
+/* ----------------------------------------------------------- */
+/* PAGE TECHNOLOGY */
+/* ----------------------------------------------------------- */
+
+body.page-technology {
+  background-image: url("../img/background-techno-d.jpg");
+}
+
+
+}
