@@ -66,6 +66,10 @@ h1 {
   font-size: 8rem;
 }
 
+ul li {
+  list-style: none;
+}
+
 /****************************
  HEADER
 ****************************/
@@ -157,6 +161,7 @@ header .container {
 .nav-item a span {
   font-weight: 700;
   margin-right: 0.8rem;
+  opacity: 0.5;
 }
 
 /****************************
@@ -201,6 +206,133 @@ body.page-destination {
   background-image: url("../img/background-desti-m.jpg") ;
 }
 
+.img-lune img{
+  width: 17rem;
+  height: 17rem;
+}
+
+.page-destination .pre-title {
+  font-size: 1.6rem;
+  letter-spacing: 0.27rem;
+  font-weight: 400;
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+  text-align: center;
+}
+
+.page-destination .pre-title span {
+  padding-right: 1.8rem;
+  font-weight: 700;
+  opacity: 0.5;
+}
+
+
+.contenu-destination {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.img-lune img {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.nav-destination .liste-destination {
+  display :flex;
+  flex-direction: row;
+  gap: 2.6rem;
+  justify-content: center;
+  padding-top: 2.6rem;
+}
+
+.item-destination a {
+  position: relative;
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 400;
+  color: #D0D6F9;
+  font-size: 1.4rem;
+  letter-spacing: 0.27rem;
+}
+
+ .item-destination a.active{
+  color: #fff;
+ }
+/* Trait sous le lien actif */
+  .item-destination a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -1rem; 
+    left: 0;
+    right: 0;
+    height: 0.3rem;
+    background-color: #fff;
+  }
+
+  .txt-destination h2{
+    font-family: 'Bellefair';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5.6rem;
+    padding-top: 2rem;
+    color: #fff;
+  }
+
+  .txt-destination p {
+   position: relative;
+   padding-bottom: 2rem;
+   font-size: 1.5rem;
+   font-family: 'Barlow';
+   font-style: normal;
+   font-weight: 400;
+   line-height: 2.5rem;
+  }
+
+  .txt-destination p::before{
+    content: "";
+    position: absolute;
+    bottom: -1rem; 
+    left: 0;
+    right: 0;
+    height: 0.1rem;
+    background-color: #fff;
+    opacity: 0.5;
+  }
+
+  .description-destination {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+  }
+  
+  .description-destination ul {
+ 
+  padding: 0;          
+  text-align: center;    
+}
+
+  .description-destination li:nth-child(1){
+    
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    letter-spacing: 0.23rem;
+    padding-bottom: 1rem;
+  }
+
+  .description-destination li:nth-child(2){
+    color:#fff;
+    font-family: 'Bellefair';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.8rem;
+    padding-bottom: 2rem;
+  }
+
+
 /* ----------------------------------------------------------- */
 /* PAGE CREW */
 /* ----------------------------------------------------------- */
@@ -228,20 +360,17 @@ body.page-technology {
    no-repeat;
 }
 
-  /* 1️⃣  On cache le menu burger */
   .burger {
     display: none;
   }
 
-  /* 2️⃣  Le header devient la référence pour positionner le fond blur */
   header {
     position: relative;
     height: 9rem;
     
   }
 
-  /* 3️⃣  La nav visible, collée au bord droit, effet blur */
-   .nav {
+  .nav {
     position: absolute; 
     transform: none;
     width: auto; /* ✅ réinitialisation */
@@ -252,13 +381,10 @@ body.page-technology {
     justify-content: center;
   }
   
-
-  /* 4️⃣  Les chiffres disparaissent */
   .nav-item span {
     display: none;
   }
 
-  /* 5️⃣  Liste horizontale */
   .nav-liste {
     flex-direction: row;
     gap: 3.7rem;
@@ -266,7 +392,6 @@ body.page-technology {
     align-items: center;
   }
 
-  /* 6️⃣  Liens */
   .nav-item a {
     font-size: 1.4rem;
     letter-spacing: 0.2rem;
@@ -322,12 +447,78 @@ body.page-technology {
 
 
 /* ----------------------------------------------------------- */
-/* PAGE DESTINATION */
+/* PAGE DESTINATION Tablette*/
 /* ----------------------------------------------------------- */
 
 body.page-destination {
   background-image: url("../img/background-desti-t.jpg") ;
 }
+
+.img-lune img{
+  width: 30rem;
+  height: 30rem;
+}
+
+.page-destination .pre-title{
+  font-size: 2rem;
+  text-align: left;
+}
+
+.nav-destination .liste-destination {
+  gap: 3.5rem;
+}
+
+.item-destination a {
+  font-size: 1.6rem;
+}
+
+.txt-destination h2 {
+  font-size: 8rem;
+  padding-top: 3rem;
+}
+
+.txt-destination p {
+   padding-bottom: 3.5rem;
+   font-size: 1.6rem;
+   line-height: 2.8rem;
+   max-width: 57rem;
+   margin:0 auto
+  }
+
+.item-destination a.active::before {
+  bottom: -1.5rem;
+}
+
+
+.description-destination {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 56rem;
+    margin: 0 auto;
+
+  }
+
+.description-destination li:nth-child(1){
+    
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    letter-spacing: 0.23rem;
+    
+  }
+
+.description-destination li:nth-child(2){
+    color:#fff;
+    font-family: 'Bellefair';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.8rem;
+  }
+
 
 /* ----------------------------------------------------------- */
 /* PAGE CREW */
@@ -461,8 +652,8 @@ header::before {
   content: "";
   position: absolute;
   top: 50%; 
-  left: calc(50% - 50rem); 
-  width: 53rem; 
+  left: calc(50% - 53.5rem); 
+  width: 56rem; 
   height: 1px;
   background-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-50%);
@@ -497,12 +688,82 @@ header::before {
 }
 
 /* ----------------------------------------------------------- */
-/* PAGE DESTINATION */
+/* PAGE DESTINATION Desktop*/
 /* ----------------------------------------------------------- */
 
 body.page-destination {
   background-image: url("../img/background-desti-d.jpg");
 }
+
+.img-lune img{
+  width: 44rem;
+  height: 44rem;
+}
+
+.page-destination .pre-title{
+  font-size: 2.8rem;
+  text-align: left;
+  letter-spacing: 0.4rem;
+  padding-top: 10rem;
+}
+
+.page-destination .pre-title span {
+  padding-right: 2.8rem;
+}
+
+.txt-destination h2{
+  font-size: 10rem;
+  padding-top: 3.7rem;
+}
+
+.txt-destination p{
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+  padding-bottom: 6.4rem;
+}
+
+.contenu-destination {
+  padding-top: 5rem;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  align-items: center;
+  gap: 5rem;
+  padding-bottom: 6rem;
+}
+
+.txt-destination {
+  max-width: 44.5rem;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.nav-destination .liste-destination {
+  display: flex;
+  justify-content: flex-start; 
+  text-align: left;
+  width: 100%;
+  padding-left: 0; 
+}
+
+.description-destination {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 7.9rem;
+  width: 100%;
+}
+
+.description-destination ul {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+
+.txt-destination p::before{
+    bottom: -0.5rem; 
+  }
 
 /* ----------------------------------------------------------- */
 /* PAGE CREW */
