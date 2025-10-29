@@ -53,13 +53,25 @@ a {
 /****************************
  TYPOGRAPHY
 ****************************/
+
+ p {
+  line-height: 1.8 ;
+}
+
 .pre-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1.6rem;
-  letter-spacing: 0.2rem;
-  padding-top: 3.2rem;
-  padding-bottom: 3.2rem;
+  letter-spacing: 0.27rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
   text-align: center;
+  color:#fff;
+}
+
+.txt .pre-title{
+  color:#D0D6F9;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
 
 .pre-title span {
@@ -78,6 +90,7 @@ h1 {
 ul li {
   list-style: none;
 }
+
 
 /****************************
  HEADER
@@ -292,6 +305,7 @@ body.page-destination {
     font-size: 5.6rem;
     padding-top: 2rem;
     color: #fff;
+    
   }
 
   .txt-destination p {
@@ -301,7 +315,6 @@ body.page-destination {
    font-family: 'Barlow';
    font-style: normal;
    font-weight: 400;
-   line-height: 2.5rem;
   }
 
   .txt-destination p::before{
@@ -353,6 +366,91 @@ body.page-destination {
 
 body.page-crew {
   background-image: url("../img/background-crew-m.jpg") ;
+}
+
+.crew-txt{
+  text-align: center;
+}
+
+.crew-txt .crew-role {
+  font-family: 'Bellefair';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: #fff;
+  opacity: 0.5;
+  padding-bottom: 0.2rem;
+}
+
+.crew-txt h3{
+  font-family: 'Bellefair';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.4rem;
+  color: #fff;
+  padding-bottom: 1.5rem;
+}
+
+.crew-txt p{
+  font-size: 1.5rem;
+  padding-bottom: 5rem;
+  font-weight: 400;
+}
+
+.contenu-crew {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.picture-crew  {
+  position: relative;
+  width: 17.7rem;
+  height: 25rem;
+  padding-top: 1rem;
+}
+
+.picture-crew::before {
+  content: "";
+  position: absolute;
+  bottom: 2rem;
+  left: 50%; 
+  transform: translateX(-50%);
+  width: 32.7rem;    
+  height: 0.1rem;
+  background-color: #383B4B;
+  opacity: 1;
+}
+
+/* Style slider */
+.crew-slider {
+  display: flex;
+  justify-content: center;
+  gap: 1.7rem;
+  padding-top: 1.3rem;
+  padding-bottom: 3rem;
+}
+
+.dot {
+  all: unset; /* supprime tout le style par défaut du bouton */
+  display: block; /* comme un élément normal */
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.3;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+}
+
+.dot:hover {
+  opacity: 0.7;
 }
 
 /* ----------------------------------------------------------- */
@@ -433,13 +531,15 @@ body.page-techno {
 
   .pre-title {
     font-size: 2rem;
-    letter-spacing: 0.3rem;
+    letter-spacing: 0.34rem;
   }
 
   .page-destination .pre-title,
   .page-crew .pre-title,
   .page-techno .pre-title {
      text-align: left;
+     padding-top: 5rem;
+     padding-bottom: 6rem;
   }
 
   h1 {
@@ -497,7 +597,6 @@ body.page-destination {
 .txt-destination p {
    padding-bottom: 3.5rem;
    font-size: 1.6rem;
-   line-height: 2.8rem;
    max-width: 57rem;
    margin:0 auto
   }
@@ -538,15 +637,64 @@ body.page-destination {
 
 
 /* ----------------------------------------------------------- */
-/* PAGE CREW */
+/* PAGE CREW Tablette*/
 /* ----------------------------------------------------------- */
 
 body.page-crew {
   background-image: url("../img/background-crew-t.jpg") ;
 }
 
+.contenu-crew {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+}
+
+.crew-info {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.crew-txt .crew-role {
+  font-size: 2.8rem;
+  
+}
+
+.crew-txt h3 {
+  font-size: 4rem;
+}
+
+.crew-txt p {
+  font-size: 1.6rem;
+  max-width: 45.8rem;
+  padding-bottom: 2.5rem;
+}
+
+.crew-slider {
+  padding-bottom: 3rem;
+}
+
+.picture-crew {
+    width: 45.6rem;
+    height: 57.2rem;
+  }
+
+.picture-crew img {
+    content: url("../img/douglas.png");
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+  }
+
+.picture-crew::before {
+    display: none;
+  }
+
+
 /* ----------------------------------------------------------- */
-/* PAGE TECHNOLOGY */
+/* PAGE TECHNOLOGY Tablette*/
 /* ----------------------------------------------------------- */
 
 body.page-techno {
@@ -717,12 +865,6 @@ body.page-destination {
   height: 44rem;
 }
 
-.pre-title{
-  font-size: 2.8rem;
-  text-align: left;
-  letter-spacing: 0.4rem;
-  padding-top: 10rem;
-}
 
 .pre-title span {
   padding-right: 2.8rem;
@@ -735,7 +877,6 @@ body.page-destination {
 
 .txt-destination p{
   font-size: 1.8rem;
-  line-height: 3.2rem;
   padding-bottom: 6.4rem;
 }
 
@@ -783,12 +924,67 @@ body.page-destination {
   }
 
 /* ----------------------------------------------------------- */
-/* PAGE CREW */
+/* PAGE CREW Desktop*/
 /* ----------------------------------------------------------- */
 
 body.page-crew {
   background-image: url("../img/background-crew-d.jpg") ;
 }
+
+
+.contenu-crew {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8rem;
+  padding-top: 0;
+}
+
+.picture-crew {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+
+.picture-crew img {
+  content: url("../img/douglas-d.png");
+  width: auto;
+  height: 65rem; 
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  transform: none; /* on annule le translateX du mode tablette */
+}
+
+.crew-txt{
+  text-align: left;
+}
+
+.crew-txt .crew-role{
+  font-size: 3.2rem;
+  padding-top: 10rem;
+}
+
+.crew-txt h3 {
+  font-size: 5.6rem;
+}
+
+.crew-txt p {
+  font-size: 1.8rem;padding-bottom: 9rem;
+}
+
+
+.crew-slider {
+  justify-content: flex-start;
+  padding-bottom: 0;
+}
+
+
+
 
 /* ----------------------------------------------------------- */
 /* PAGE TECHNOLOGY */
