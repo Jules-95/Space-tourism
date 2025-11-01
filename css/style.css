@@ -473,14 +473,21 @@ text-align: center;
 }
 
 
-.techno-img img{
+.techno-img {
+  width: 100%;
+  height: 17rem;      /* hauteur fixe de la fenêtre de cadrage */
+  overflow: hidden;   /* cache ce qui dépasse */
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  max-width: none;
+}
+
+.techno-img img {
+  width: 100%;
+  height: 100%;       /* l’image remplit le bloc */
+  object-fit: cover;  /* rogne au lieu de déformer */
+  object-position: center 70%; /* déplace le cadrage vertical (ajuste selon ton image) */
   display: block;
 }
+
 
 .techno-slider {
   display: flex;
@@ -538,7 +545,7 @@ text-align: center;
 .techno-txt p {
   font-size: 1.5rem;
   letter-spacing: 0;
-  max-width: 33rem;
+  max-width: 32.7rem;
   padding-bottom: 8rem;
 }
 
@@ -813,6 +820,26 @@ body.page-techno {
   padding-bottom: 9rem;
 }
 
+.techno-img {
+  width: 100vw;
+  height: 31rem;
+  overflow: hidden;
+  position: relative;
+
+  /* Sort visuellement du container */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.techno-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom 50%; /* Ajuste le cadrage */
+  display: block;
+}
 }
 
 
@@ -1097,64 +1124,67 @@ body.page-crew {
 }
 
 
-
-
 /* ----------------------------------------------------------- */
-/* PAGE TECHNOLOGY */
+/* PAGE TECHNOLOGY - DESKTOP */
 /* ----------------------------------------------------------- */
 
 body.page-techno {
   background-image: url("../img/background-techno-d.jpg");
-  overflow-x: hidden; 
+  position : relative;
+  overflow-x: hidden;
 }
 
-.page-techno .pre-title{
-  padding-bottom: 3rem;
+.page-techno .pre-title {
+  padding-bottom: 13rem;
 }
 
 .techno-main {
+  position: relative;
   display: flex;
-  flex-direction: row-reverse; 
   align-items: center;
   justify-content: space-between;
-  height: 100vh; 
-  gap: 5rem; 
+ 
 }
 
 .contenu-techno {
   flex-direction: row;
-  justify-content: left;
+  justify-content: flex-start;
   align-items: center;
   gap: 8rem;
 }
 
-.techno-txt{
-text-align: left;
-display: flex;
-flex-direction: column;
+.techno-txt {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 .techno-img {
-  flex: 1;
-  height: auto;
-  margin-right: calc(-1 * (100vw - 100%));
-  padding-bottom: 5rem;
+  position: absolute;
+  transform: translateX(200%);
+  width: 51.5rem;     
+  height: 52.7rem;    
+  padding: 0;
+  top : 40%;
+
+  padding-bottom: 6rem;
 }
-/* Placement de l'image pas optimisé... overflow hidden obligatoire sinon marge à droite */
+
+
 .techno-img img {
-  width: 51.5rem;
-  height: 52.7rem;
-  object-fit: contain;
-  left: 34rem;
+  object-fit: cover;
+  display: block;
+  padding: 0;
+  object-position: center 45%;
 }
 
 
+/* SLIDER & TEXTE */
 .techno-slider {
   flex-direction: column;
   align-items: center;
   gap: 3.2rem;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
 }
 
 .techno-btn {
@@ -1164,8 +1194,7 @@ flex-direction: column;
   font-size: 3.2rem;
 }
 
-
-.techno-txt h3{
+.techno-txt h3 {
   font-size: 5.6rem;
   padding-bottom: 1.3rem;
 }
@@ -1177,4 +1206,6 @@ flex-direction: column;
 }
 
 
+
 }
+
