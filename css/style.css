@@ -151,7 +151,8 @@ header .container {
   right: 0;
   width: 70%;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.1); /* un peu plus opaque */
+  -webkit-backdrop-filter: blur(20px); /* compatibilité iOS Safari */
   backdrop-filter: blur(20px);
   padding: 12rem 3rem;
   transform: translateX(100%);
@@ -547,6 +548,32 @@ text-align: center;
   letter-spacing: 0;
   max-width: 32.7rem;
   padding-bottom: 8rem;
+}
+
+/* !!!!ANIMATION techno.js!!!!! */
+
+/* Animation horizontale */
+.techno-slide {
+  transition: transform 1.2s ease-in-out, opacity 0.8s ease;
+}
+
+.techno-slide.out-left {
+  transform: translateY(120vw);
+  opacity: 0;
+}
+
+.techno-slide.out-right {
+  transform: translateY(-120vw);
+  opacity: 0;
+}
+
+.techno-slide.in {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.techno-img img {
+  transition: opacity 0.4s ease;
 }
 
 

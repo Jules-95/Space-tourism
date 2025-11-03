@@ -1,10 +1,9 @@
-// js/techno.js
-
-// Sélection des éléments
 const buttons = document.querySelectorAll(".techno-btn");
 const title = document.querySelector(".techno-txt h3");
 const text = document.querySelector(".techno-txt p");
 const image = document.querySelector(".techno-img img");
+const technoTxt = document.querySelector(".contenu-techno");
+const technoImg = document.querySelector(".techno-img img");
 
 const technologies = [
   {
@@ -29,14 +28,54 @@ const technologies = [
 
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => {
-    // 1. Retirer la classe active de tous les boutons
+    if (button.classList.contains("active")) return;
+
     buttons.forEach(btn => btn.classList.remove("active"));
-    // 2. Ajouter la classe active sur le bouton cliqué
     button.classList.add("active");
 
-    // 3. Mettre à jour le contenu
-    title.textContent = technologies[index].name;
-    text.textContent = technologies[index].description;
-    image.src = technologies[index].img;
+    // Animation de sortie
+    technoTxt.classList.add("techno-slide", "out-left");
+    technoImg.classList.add("techno-slide", "out-left");
+
+    // Prépare la nouvelle image à l’avance
+    const newImg = new Image();
+    newImg.src = technologies[index].img;
+
+    newImg.onload = () => {
+      // Attendre que la sortie soit terminée
+      setTimeout(() => {
+        // Changement du contenu pendant invisibilité
+        title.textContent = technologies[index].name;
+        text.textContent = technologies[index].description;
+
+        // Transition fluide d'image : fade-out → reflow → src → fade-in
+        image.style.opacity = 0;
+
+        // ⚙️ Reflow pour forcer la transition (très important)
+        void image.offsetWidth;
+
+        setTimeout(() => {
+          image.src = newImg.src;
+
+          // ⚙️ Reflow encore une fois avant de rétablir l’opacité
+          void image.offsetWidth;
+
+          image.style.opacity = 1;
+
+          // Fin de sortie → début d’entrée
+          technoTxt.classList.remove("out-left");
+          technoImg.classList.remove("out-left");
+          technoTxt.classList.add("in");
+          technoImg.classList.add("in");
+
+          // Nettoyage après animation complète
+          setTimeout(() => {
+            technoTxt.classList.remove("in");
+            technoImg.classList.remove("in");
+          }, 1200);
+        }, 200); // petit délai pour que l’effet de fade-out soit visible
+      }, 500); // moitié de ta durée de transition
+    };
   });
 });
+
