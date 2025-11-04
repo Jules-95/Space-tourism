@@ -483,6 +483,7 @@ body.page-crew {
 /* Transition de base du texte */
 .crew-slide {
   transition: transform 1s ease-in-out, opacity 0.8s ease;
+  will-change: transform, opacity;
 }
 
 /* Sorties du texte */

@@ -40,6 +40,14 @@ const crewMembers = [
   },
 ];
 
+// === Préchargement des images (évite les micro freezes sur mobile) ===
+window.addEventListener("load", () => {
+  crewMembers.forEach(member => {
+    const img = new Image();
+    img.src = member.img;
+  });
+});
+
 // === Fonction centrale de navigation ===
 function navigateCrew(targetIndex) {
   if (targetIndex === currentIndex || targetIndex < 0 || targetIndex >= crewMembers.length) return;
@@ -71,11 +79,14 @@ function navigateCrew(targetIndex) {
       image.classList.add(crewMembers[currentIndex].class);
       image.src = newImg.src;
 
-      // Animation d'entrée
+      // 🔧 Force un reflow avant de lancer l’animation d’entrée (corrige mobile)
       crewTxt.classList.remove("out-left", "out-right");
+      void crewTxt.offsetWidth;
+
+      // Animation d'entrée (texte qui vient du bon côté)
       crewTxt.classList.add(direction === "right" ? "in-right" : "in-left");
 
-      // Nettoyage des classes après animation
+      // Nettoyage après animation
       setTimeout(() => {
         crewTxt.classList.remove("in-right", "in-left");
         image.classList.remove("fade-out");
