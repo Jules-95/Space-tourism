@@ -7,7 +7,6 @@ const image = document.querySelector(".picture-crew img");
 const crewTxt = document.querySelector(".crew-txt");
 
 let currentIndex = 0;
-let scrollCooldown = false;
 
 // === Données ===
 const crewMembers = [
@@ -48,7 +47,7 @@ function navigateCrew(targetIndex) {
   const direction = targetIndex > currentIndex ? "right" : "left";
   currentIndex = targetIndex;
 
-  // Actualise les points
+  // Actualise les points actifs
   buttons.forEach(btn => btn.classList.remove("active"));
   buttons[currentIndex].classList.add("active");
 
@@ -76,7 +75,7 @@ function navigateCrew(targetIndex) {
       crewTxt.classList.remove("out-left", "out-right");
       crewTxt.classList.add(direction === "right" ? "in-right" : "in-left");
 
-      // Nettoyage
+      // Nettoyage des classes après animation
       setTimeout(() => {
         crewTxt.classList.remove("in-right", "in-left");
         image.classList.remove("fade-out");
@@ -85,34 +84,7 @@ function navigateCrew(targetIndex) {
   };
 }
 
-// === Gestion des clics ===
+// === Gestion des clics uniquement ===
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => navigateCrew(index));
-});
-
-// === Gestion du scroll ===
-window.addEventListener("wheel", (e) => {
-  if (scrollCooldown) return;
-  scrollCooldown = true;
-
-  const delta = e.deltaY || e.deltaX;
-  if (delta > 0) navigateCrew((currentIndex + 1) % crewMembers.length);
-  else if (delta < 0) navigateCrew((currentIndex - 1 + crewMembers.length) % crewMembers.length);
-
-  setTimeout(() => (scrollCooldown = false), 1000);
-});
-
-// === Gestion du swipe tactile ===
-let startX = 0;
-window.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
-
-window.addEventListener("touchend", e => {
-  const endX = e.changedTouches[0].clientX;
-  const diff = endX - startX;
-
-  if (Math.abs(diff) > 50) {
-    navigateCrew(diff < 0 ? currentIndex + 1 : currentIndex - 1);
-  }
 });
