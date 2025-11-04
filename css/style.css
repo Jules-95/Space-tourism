@@ -454,6 +454,88 @@ body.page-crew {
   opacity: 0.7;
 }
 
+/* !!!!Ajustement images mobile crew issu de js */
+.crew-mark  {
+  width: 15.3rem;
+  height: 22.2rem;
+  transform: translateY(-0.3rem)
+}
+
+.crew-victor {
+  width: 18rem;
+  height: 22.2rem;
+  transform: translateY(-0.3rem)
+}
+
+/* Quand Anousheh est active, on élargit la boîte picture-crew */
+.picture-crew:has(.crew-anousheh) {
+  width: 22.6rem;
+} 
+
+.crew-anousheh  {
+  width: 22.6rem;
+  height: 22.3rem;
+  transform: translateY(-0.4rem);
+}
+
+/* !!!!ANIMATION crew.js!!!!! */
+.crew-slide {
+  transition: transform 1s ease-in-out, opacity 0.8s ease;
+}
+
+/* Sortie */
+.crew-slide.out-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.crew-slide.out-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Entrée */
+.crew-slide.in-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: slideInLeft 1s ease forwards;
+}
+
+.crew-slide.in-right {
+  transform: translateX(100%);
+  opacity: 0;
+  animation: slideInRight 1s ease forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Image */
+.picture-crew img {
+  transition: opacity 0.4s ease;
+}
+
+
+
 /* ----------------------------------------------------------- */
 /* PAGE TECHNOLOGY */
 /* ----------------------------------------------------------- */
@@ -799,17 +881,47 @@ body.page-crew {
   }
 
 .picture-crew img {
-    content: url("../img/douglas.png");
+   
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    width: 45.6rem;
+    height: 57.2rem;
 
   }
 
 .picture-crew::before {
     display: none;
   }
+
+  /* !!!!Ajustement images/txt tablette crew issu de js */
+
+/* Quand Anousheh est active, on élargit la boîte picture-crew */
+.picture-crew:has(.crew-anousheh) {
+  width: 54rem;
+} 
+
+/* Ajustement visuel spécifique Anousheh */
+.picture-crew .crew-anousheh {
+  width: auto;
+  height: auto;
+}
+
+/* Exception widht Mark */
+.picture-crew:has(.crew-mark) ~ .crew-info .crew-txt p {
+  max-width: 52rem;
+}
+
+/* Exception widht Victor */
+.picture-crew:has(.crew-victor) ~ .crew-info .crew-txt p {
+  max-width: 59rem;
+}
+
+/* Exception widht Anousheh */
+.picture-crew:has(.crew-anousheh) ~ .crew-info .crew-txt p {
+  max-width: 53rem;
+}
 
 
 /* ----------------------------------------------------------- */
@@ -1095,10 +1207,11 @@ body.page-destination {
 /* ----------------------------------------------------------- */
 
 body.page-crew {
-  background-image: url("../img/background-crew-d.jpg") ;
+  background-image: url("../img/background-crew-d.jpg");
+  overflow: hidden;
 }
 
-
+/* ===== Layout général ===== */
 .contenu-crew {
   display: flex;
   flex-direction: row-reverse;
@@ -1114,24 +1227,26 @@ body.page-crew {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  transform: scale(1.15, 1.08);
 }
 
-
 .picture-crew img {
-  content: url("../img/douglas-d.png");
-  width: auto;
-  height: 65rem; 
   position: absolute;
   bottom: 0;
   left: 20%;
-  transform: none; /* on annule le translateX du mode tablette */
+  width: auto;
+  height: auto;
+  max-height: 100rem;
+  object-fit: contain;
+  transform: none;
 }
 
-.crew-txt{
+/* ===== Texte ===== */
+.crew-txt {
   text-align: left;
 }
 
-.crew-txt .crew-role{
+.crew-txt .crew-role {
   font-size: 3.2rem;
   padding-top: 10rem;
 }
@@ -1141,14 +1256,53 @@ body.page-crew {
 }
 
 .crew-txt p {
-  font-size: 1.8rem;padding-bottom: 9rem;
+  font-size: 1.8rem;
+  padding-bottom: 9rem;
 }
-
 
 .crew-slider {
   justify-content: flex-start;
   padding-bottom: 0;
 }
+
+.dot {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* ===== Ajustements spécifiques ===== */
+
+/* Textes spécifiques */
+.picture-crew:is(:has(.crew-mark), :has(.crew-victor), :has(.crew-anousheh))
+  ~ .crew-info
+  .crew-txt
+  p {
+  max-width: 44rem;
+}
+
+/* --- Douglas (valeurs par défaut) --- */
+
+/* --- Mark --- */
+.picture-crew img.crew-mark {
+  height: 65.4rem;
+  bottom: -5.8rem;
+  left: 0;
+}
+
+/* --- Victor --- */
+.picture-crew img.crew-victor {
+  height: 55rem;
+  left: 25%;
+}
+
+/* --- Anousheh --- */
+.picture-crew img.crew-anousheh {
+  height: 60.7rem;
+  bottom: -3rem;
+  left: 25%;
+  transform: scale(1.15);
+}
+
 
 
 /* ----------------------------------------------------------- */
