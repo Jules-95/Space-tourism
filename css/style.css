@@ -255,19 +255,22 @@ body.page-destination {
   padding-top: 2.6rem;
 }
 
-.item-destination a {
+.item-destination .desti-btn {
+  all: unset; 
   position: relative;
+  cursor: pointer;
   font-family: 'Barlow Condensed';
   font-style: normal;
   font-weight: 400;
   color: #D0D6F9;
   font-size: 1.4rem;
   letter-spacing: 0.27rem;
-  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 /* Gestion deu before/active du nav destination  */
-.item-destination a::before {
+.item-destination .desti-btn::before {
   content: "";
   position: absolute;
   bottom: -1.5rem;
@@ -278,23 +281,23 @@ body.page-destination {
   transform: scaleX(0);
   opacity: 0;
   transform-origin: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.item-destination a:hover::before {
+.item-destination .desti-btn:hover::before {
   transform: scaleX(1);
   opacity: 0.5;
   bottom: -1.5rem;
 }
-
-.item-destination a.active::before {
-  transform: scaleX(1);
-  opacity: 1;
+ /* Bouton actif : texte blanc */
+.item-destination .desti-btn.active {
+  color: #fff;
 }
 
-
-.item-destination a.active {
-  color: #fff;
+/* Soulignement visible quand actif */
+.item-destination .desti-btn.active::before {
+  transform: scaleX(1);
+  opacity: 1;
 }
 
 
@@ -794,12 +797,11 @@ body.page-destination {
 }
 
 
-
 .nav-destination .liste-destination {
   gap: 3.5rem;
 }
 
-.item-destination a {
+.item-destination .desti-btn {
   font-size: 1.6rem;
 }
 
@@ -815,7 +817,7 @@ body.page-destination {
    margin:0 auto
   }
 
-.item-destination a.active::before {
+.item-destination .desti-btn.active::before {
   bottom: -1.5rem;
 }
 
@@ -1306,6 +1308,13 @@ body.page-crew {
 .picture-crew img.crew-victor {
   height: 55rem;
   left: 25%;
+}
+
+.picture-crew:is(:has(.crew-victor))
+  ~ .crew-info
+  .crew-txt
+  p {
+  padding-bottom: 5.8rem;
 }
 
 /* --- Anousheh --- */
