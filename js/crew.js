@@ -40,7 +40,7 @@ const crewMembers = [
   },
 ];
 
-// === Préchargement des images (évite les micro freezes sur mobile) ===
+// === Préchargement des images ===
 window.addEventListener("load", () => {
   crewMembers.forEach(member => {
     const img = new Image();
@@ -48,7 +48,7 @@ window.addEventListener("load", () => {
   });
 });
 
-// === Fonction centrale de navigation ===
+// === Fonction principale ===
 function navigateCrew(targetIndex) {
   if (targetIndex === currentIndex || targetIndex < 0 || targetIndex >= crewMembers.length) return;
 
@@ -63,39 +63,45 @@ function navigateCrew(targetIndex) {
   crewTxt.classList.add("crew-slide", direction === "right" ? "out-left" : "out-right");
   image.classList.add("fade-out");
 
-  // Précharger la nouvelle image
+  // === Étape 1 : Prépare la nouvelle image (en cache)
   const newImg = new Image();
   newImg.src = crewMembers[currentIndex].img;
 
+  // === Étape 2 : Attendre la fin de l’animation de sortie (500 ms)
   newImg.onload = () => {
     setTimeout(() => {
-      // Mise à jour du texte
+      // === Étape 3 : Mise à jour du contenu
       role.textContent = crewMembers[currentIndex].role;
       nameEl.textContent = crewMembers[currentIndex].name;
       bio.innerHTML = crewMembers[currentIndex].bio;
 
-      // Mise à jour de l'image
+      // Image : on change le src APRÈS un petit reflow
+      void image.offsetWidth;
       image.className = "";
       image.classList.add(crewMembers[currentIndex].class);
       image.src = newImg.src;
 
-      // 🔧 Force un reflow avant de lancer l’animation d’entrée (corrige mobile)
+      // === Étape 4 : Force un reflow AVANT d’ajouter les classes d’entrée
       crewTxt.classList.remove("out-left", "out-right");
       void crewTxt.offsetWidth;
 
-      // Animation d'entrée (texte qui vient du bon côté)
-      crewTxt.classList.add(direction === "right" ? "in-right" : "in-left");
+      // === Étape 5 : Lance l’entrée avec requestAnimationFrame.
+      requestAnimationFrame(() => {
+        crewTxt.classList.add(direction === "right" ? "in-right" : "in-left");
+        image.classList.remove("fade-out");
+        image.classList.add("fade-in");
+      });
 
-      // Nettoyage après animation
+      // === Étape 6 : Nettoyage
       setTimeout(() => {
         crewTxt.classList.remove("in-right", "in-left");
-        image.classList.remove("fade-out");
-      }, 1000);
+        image.classList.remove("fade-in");
+      }, 1200);
     }, 500);
   };
 }
 
-// === Gestion des clics uniquement ===
+// === Événements ===
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => navigateCrew(index));
 });
