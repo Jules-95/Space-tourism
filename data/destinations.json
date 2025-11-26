@@ -1,26 +1,4 @@
 {
-  /*
-   * FICHIER: destinations.json
-   * DESCRIPTION: Base de données des destinations pour la galerie modale
-   * 
-   * Ce fichier contient toutes les informations sur les destinations spatiales.
-   * Il est utilisé par la classe DestinationData pour charger les données de manière asynchrone.
-   * 
-   * STRUCTURE:
-   * - destinations: tableau contenant chaque destination
-   *   - id: identifiant unique (utilisé pour les sélecteurs CSS)
-   *   - name: nom affiché de la destination
-   *   - description: texte descriptif détaillé
-   *   - image: chemin vers l'image de la planète
-   *   - distance: distance depuis la Terre
-   *   - travelTime: temps de voyage estimé
-   * 
-   * AVANTAGES du JSON:
-   * 1. Séparation des données de la logique métier
-   * 2. Facile à maintenir et à étendre
-   * 3. Chargement asynchrone possible
-   * 4. Format standard du web
-   */
   "destinations": [
     {
       "id": "moon",
