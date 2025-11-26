@@ -667,8 +667,9 @@ text-align: center;
 
 .techno-slide.in {
   transform: translateY(0);
-  opacity: 1;
+  opacity: 1; 
 }
+
 
 .techno-img img {
   transition: opacity 0.4s ease;
