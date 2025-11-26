@@ -79,13 +79,34 @@
 <script src="js/nav.js"></script>
 	<script src="js/destination.js"></script>
 	
+	<!-- 
+	 * AJOUTS GALERIE MODALE - Branche feature/nouvelles-fonctionnalites
+	 * 
+	 * 1. BOUTON GALERIE: Bouton flottant qui ouvre la modal
+	 *    - Position: fixé en bas à droite de l'écran
+	 *    - Style: semi-transparent avec bordure blanche
+	 *    - Action: déclenche l'ouverture de la galerie
+	 * 
+	 * 2. SCRIPTS DE LA GALERIE: Architecture SOLID
+	 *    - DestinationData.js: Gestion des données (SRP)
+	 *    - ModalManager.js: Gestion de la modal (SRP)
+	 *    - DestinationRenderer.js: Rendu HTML (SRP)
+	 *    - DestinationGallery.js: Coordination (DIP)
+	 *    - modal-gallery.js: Point d'entrée principal
+	 * 
+	 * 3. FONCTIONNEMENT:
+	 *    - Clic sur "Galerie" → ouvre modal avec icônes
+	 *    - Clic sur icône → met à jour page principale
+	 *    - Communication via événements personnalisés
+	-->
+	
 	<!-- Gallery Button -->
 	<button id="gallery-btn" style="
 	    position: fixed;
 	    bottom: 2rem;
 	    right: 2rem;
-	    background: rgba(255, 255, 255, 0.1);
-	    border: 1px solid rgba(255, 255, 255, 0.3);
+	    background: rgba(255,255,255, 0.1);
+	    border: 1px solid rgba(255,255,255, 0.3);
 	    color: white;
 	    padding: 1rem 2rem;
 	    border-radius: 2rem;
