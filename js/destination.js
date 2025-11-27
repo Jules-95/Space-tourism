@@ -45,12 +45,24 @@ buttons.forEach((btn, index) => {
     buttons.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
 
-    // 2️⃣ Changement du contenu
+    // 2️⃣ Animation 3D et changement du contenu
     const dest = destinations[index];
-    title.textContent = dest.name;
-    description.textContent = dest.text;
-    image.src = dest.img;
-    distance.textContent = dest.distance;
-    travelTime.textContent = dest.time;
+    
+    // Ajouter l'animation de changement
+    image.classList.add("changing");
+    
+    // Changer le contenu après le début de l'animation
+    setTimeout(() => {
+      title.textContent = dest.name;
+      description.textContent = dest.text;
+      image.src = dest.img;
+      distance.textContent = dest.distance;
+      travelTime.textContent = dest.time;
+    }, 300);
+    
+    // Retirer la classe d'animation
+    setTimeout(() => {
+      image.classList.remove("changing");
+    }, 600);
   });
 });
