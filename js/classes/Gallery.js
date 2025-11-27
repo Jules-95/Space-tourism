@@ -11,11 +11,13 @@
  * 3. Ouvrir: gallery.openGallery()
  */
 class Gallery {
-    constructor(type) {
+constructor(type) {
         console.log(`Gallery constructor called with type: ${type}`);
         this.type = type; // 'destination', 'crew', ou 'technology'
         this.data = [];
+        this.filteredData = [];
         this.modalManager = null;
+        this.activeFilters = {};
         
         // Configuration selon le type
         this.config = this.getConfig(type);
@@ -94,7 +96,7 @@ class Gallery {
         console.log(`Loaded ${this.type} data:`, this.data);
     }
 
-    /*
+/*
      * MÉTHODE: openGallery()
      * DESCRIPTION: Ouvre la galerie dans une modal
      */
@@ -119,27 +121,34 @@ class Gallery {
             return;
         }
 
+        // Initialiser les données filtrées
+        this.filteredData = [...this.data];
+        this.activeFilters = {};
+
         const galleryContent = this.renderGallery();
         console.log('Gallery content rendered');
         
-        this.modalManager.open(galleryContent);
-        console.log('Modal opened');
+        // Configuration des filtres
+        const filters = { type: this.type };
+        
+        this.modalManager.open(galleryContent, filters);
+        
         
         // Attacher les événements aux cartes après le rendu
         this.bindCardEvents();
     }
 
-    /*
+/*
      * MÉTHODE: renderGallery()
      * DESCRIPTION: Génère le HTML de la galerie (uniquement des images)
      */
     renderGallery() {
-        console.log('Rendering gallery with data:', this.data);
-        console.log('Data type:', typeof this.data);
-        console.log('Is array?', Array.isArray(this.data));
+        console.log('Rendering gallery with filtered data:', this.filteredData);
+        console.log('Data type:', typeof this.filteredData);
+        console.log('Is array?', Array.isArray(this.filteredData));
         
-        if (!Array.isArray(this.data)) {
-            console.error('Data is not an array:', this.data);
+        if (!Array.isArray(this.filteredData)) {
+            console.error('Filtered data is not an array:', this.filteredData);
             return '<div class="gallery"><h3>Erreur: données non valides</h3></div>';
         }
         
@@ -147,7 +156,7 @@ class Gallery {
             <div class="gallery">
                 <h3>${this.config.galleryTitle}</h3>
                 <div class="gallery-grid">
-                    ${this.data.map(item => this.renderImageCard(item)).join('')}
+                    ${this.filteredData.map(item => this.renderImageCard(item)).join('')}
                 </div>
             </div>
         `;
@@ -168,7 +177,7 @@ class Gallery {
         `;
     }
 
-    /*
+/*
      * MÉTHODE: bindEvents()
      * DESCRIPTION: Attache les écouteurs d'événements
      */
@@ -178,6 +187,12 @@ class Gallery {
             const { item } = e.detail;
             this.config.updateFunction(item);
             this.modalManager.close();
+        });
+
+        // Écouter les changements de filtre
+        document.addEventListener('modal:filter-changed', (e) => {
+            const { filterType, value } = e.detail;
+            this.applyFilter(filterType, value);
         });
 
         // Écouter la fermeture de la modal
@@ -213,12 +228,12 @@ class Gallery {
         }, 100);
     }
 
-    /*
+/*
      * MÉTHODE: handleSelection()
      * DESCRIPTION: Gère la sélection d'un élément
      */
     handleSelection(itemId) {
-        const selectedItem = this.data.find(item => {
+        const selectedItem = this.filteredData.find(item => {
             if (this.type === 'destination') {
                 return item.name === itemId;
             } else {
@@ -318,12 +333,140 @@ class Gallery {
         });
     }
 
+/*
+     * MÉTHODE: applyFilter()
+     * DESCRIPTION: Applique un filtre aux données
+     */
+    applyFilter(filterType, value) {
+        console.log(`Applying filter: ${filterType} = ${value}`);
+        
+        // Mettre à jour les filtres actifs
+        this.activeFilters[filterType] = value;
+        
+        // Réinitialiser les données filtrées
+        this.filteredData = [...this.data];
+        
+        // Appliquer tous les filtres actifs
+        Object.entries(this.activeFilters).forEach(([type, filterValue]) => {
+            if (filterValue) {
+                this.filteredData = this.filterData(this.filteredData, type, filterValue);
+            }
+        });
+        
+        console.log('Filtered data:', this.filteredData);
+        
+        // Mettre à jour le rendu
+        this.updateGalleryRender();
+    }
+
+    /*
+     * MÉTHODE: filterData()
+     * DESCRIPTION: Filtre les données selon le type et la valeur
+     */
+    filterData(data, filterType, value) {
+        switch (this.type) {
+            case 'destination':
+                return this.filterDestinations(data, filterType, value);
+            case 'crew':
+                return this.filterCrew(data, filterType, value);
+            case 'technology':
+                return this.filterTechnology(data, filterType, value);
+            default:
+                return data;
+        }
+    }
+
+    /*
+     * MÉTHODE: filterDestinations()
+     * DESCRIPTION: Filtre les destinations
+     */
+    filterDestinations(data, filterType, value) {
+        return data.filter(item => {
+            if (filterType === 'distance') {
+                const distance = item.distance;
+                switch (value) {
+                    case 'close':
+                        return distance.includes('384,400');
+                    case 'medium':
+                        return distance.includes('225 MIL') || distance.includes('628 MIL');
+                    case 'far':
+                        return distance.includes('1.6 BIL');
+                    default:
+                        return true;
+                }
+            } else if (filterType === 'travelTime') {
+                const travelTime = item.travelTime;
+                switch (value) {
+                    case 'short':
+                        return travelTime.includes('3 DAYS');
+                    case 'medium':
+                        return travelTime.includes('9 MONTHS');
+                    case 'long':
+                        return travelTime.includes('3 YEARS') || travelTime.includes('7 YEARS');
+                    default:
+                        return true;
+                }
+            }
+            return true;
+        });
+    }
+
+    /*
+     * MÉTHODE: filterCrew()
+     * DESCRIPTION: Filtre l'équipage
+     */
+    filterCrew(data, filterType, value) {
+        if (filterType === 'role') {
+            return data.filter(item => item.role === value);
+        }
+        return data;
+    }
+
+    /*
+     * MÉTHODE: filterTechnology()
+     * DESCRIPTION: Filtre les technologies
+     */
+    filterTechnology(data, filterType, value) {
+        if (filterType === 'type') {
+            return data.filter(item => {
+                switch (value) {
+                    case 'vehicle':
+                        return item.id === 'launch-vehicle';
+                    case 'infrastructure':
+                        return item.id === 'spaceport';
+                    case 'capsule':
+                        return item.id === 'space-capsule';
+                    default:
+                        return true;
+                }
+            });
+        }
+        return data;
+    }
+
+    /*
+     * MÉTHODE: updateGalleryRender()
+     * DESCRIPTION: Met à jour le rendu de la galerie après filtrage
+     */
+    updateGalleryRender() {
+        const galleryBody = document.querySelector('.modal-body .gallery');
+        if (galleryBody) {
+            const newContent = this.renderGallery();
+            galleryBody.innerHTML = newContent;
+            
+            // Re-attacher les événements aux cartes
+            this.bindCardEvents();
+        }
+    }
+
     /*
      * MÉTHODE: cleanup()
      * DESCRIPTION: Nettoyage des ressources
      */
     cleanup() {
         console.log(`${this.type} gallery cleanup completed`);
+        this.filteredData = [];
+        this.activeFilters = {};
     }
 }
 
