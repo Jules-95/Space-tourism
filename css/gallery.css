@@ -1,0 +1,287 @@
+/* 
+ * FICHIER: gallery.css
+ * DESCRIPTION: Styles complets pour toutes les galeries modales
+ * 
+ * RÔLE: Fournir les styles visuels pour les galeries de destinations,
+ * d'équipage et de technologies en utilisant un design cohérent.
+ */
+
+/* === Conteneur principal de la galerie === */
+.gallery {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.gallery h3 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+/* === Grilles de Galerie === */
+.gallery-grid,
+.crew-gallery-grid,
+.techno-gallery-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    justify-items: center;
+}
+
+/* Grille pour destinations - petites icônes circulaires */
+.gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    max-width: 600px;
+    margin: 2rem auto 0;
+}
+
+/* Grilles pour crew et techno - cartes plus grandes */
+.crew-gallery-grid,
+.techno-gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* === Cartes d'Images (Destinations) === */
+.gallery-image-card,
+.modal-body .gallery-image-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    width: 80px !important;
+    height: 80px !important;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.gallery-image-card img,
+.modal-body .gallery-image-card img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    display: block;
+    border-radius: 50%;
+    max-width: none !important;
+    max-height: none !important;
+}
+
+.gallery-image-card:hover,
+.gallery-image-card-hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-image-card-selected {
+    border-color: #4EA8DE;
+    box-shadow: 0 0 15px rgba(78, 168, 222, 0.6);
+    transform: scale(1.15);
+}
+
+.gallery-image-card-selected img {
+    opacity: 0.9;
+}
+
+/* === Cartes Crew et Techno === */
+.crew-card,
+.techno-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.crew-card:hover,
+.techno-card:hover,
+.crew-card-hover,
+.techno-card-hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.crew-card-selected,
+.techno-card-selected {
+    border-color: #4EA8DE;
+    box-shadow: 0 0 20px rgba(78, 168, 222, 0.4);
+}
+
+/* Images des cartes crew/techno */
+.crew-card-image,
+.techno-card-image {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.crew-card-image img,
+.techno-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.crew-card:hover .crew-card-image img,
+.techno-card:hover .techno-card-image img {
+    transform: scale(1.05);
+}
+
+/* Informations des cartes crew/techno */
+.crew-card-info,
+.techno-card-info {
+    padding: 1rem;
+    color: white;
+}
+
+.crew-card-info h4,
+.techno-card-info h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.875rem;
+    color: #4EA8DE;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.crew-card-info h5,
+.techno-card-info h5 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.crew-card-info p,
+.techno-card-info p {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    opacity: 0.8;
+}
+
+/* Boutons de sélection crew/techno */
+.crew-card-select,
+.techno-card-select {
+    width: 100%;
+    padding: 0.75rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+}
+
+.crew-card-select:hover,
+.techno-card-select:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+/* === Bouton de Galerie dans la page === */
+.gallery-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.gallery-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+.gallery-btn:focus {
+    outline: 2px solid #4EA8DE;
+    outline-offset: 2px;
+}
+
+/* Styles pour les boutons dans les sliders */
+.crew-slider .gallery-btn,
+.techno-slider .gallery-btn {
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .gallery {
+        padding: 1rem;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+    
+    .crew-gallery-grid,
+    .techno-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .gallery h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .gallery-image-card {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .crew-card-image,
+    .techno-card-image {
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .gallery-image-card {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .crew-card-info,
+    .techno-card-info {
+        padding: 0.75rem;
+    }
+    
+    .crew-card-info h5,
+    .techno-card-info h5 {
+        font-size: 1rem;
+    }
+    
+    .crew-card-info p,
+    .techno-card-info p {
+        font-size: 0.8rem;
+    }
+}

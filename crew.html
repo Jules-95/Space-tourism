@@ -6,9 +6,10 @@
     <meta name="author" content="Jules">
     <title>CREW</title>
 
-    <link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gallery.css">
 </head>
 
 
@@ -46,7 +47,7 @@
 
 			<section class="crew-info">
 
-		        <div class="crew-slider">
+<div class="crew-slider">
                     <button class="dot active" aria-label="Douglas"></button>
                     <button class="dot" aria-label="Mark"></button>
                     <button class="dot" aria-label="Victor"></button>
@@ -65,8 +66,27 @@
 		
 	</main>
 
-	<script src="js/nav.js"></script>
+<script src="js/nav.js"></script>
 	<script src="js/crew.js"></script>
+	<script src="js/classes/ModalManager.js"></script>
+	<script src="js/classes/DataManager.js"></script>
+	<script src="js/classes/UniversalRenderer.js"></script>
+	<script src="js/classes/Gallery.js"></script>
+	<script src="js/gallery-init.js"></script>
+	
+	<!-- Gallery Button -->
+	<button id="gallery-btn" style="
+	    position: fixed;
+	    bottom: 2rem;
+	    right: 2rem;
+	    background: rgba(255,255,255, 0.1);
+	    border: 1px solid rgba(255,255,255, 0.3);
+	    color: white;
+	    padding: 1rem 2rem;
+	    border-radius: 2rem;
+	    cursor: pointer;
+	    z-index: 100;
+	">Galerie</button>
 </body>
 
 
