@@ -35,7 +35,7 @@ class ModalManager {
      * </div>
      */
     createModal(content) {
-        // Création du fond de la modal (overlay)
+        // Création du fond derrière la modal (overlay)
         this.modalElement = document.createElement('div');
         this.modalElement.style.cssText = `
             position: fixed;
@@ -50,7 +50,7 @@ class ModalManager {
             z-index: 1000;
         `;
         
-        // Création du conteneur de contenu
+        // Création du conteneur de contenu / agit sur le fond de la modale
         const contentDiv = document.createElement('div');
         contentDiv.style.cssText = `
             background: #0B0D17;

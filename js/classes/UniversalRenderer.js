@@ -27,7 +27,7 @@ class UniversalRenderer {
     getConfig(type) {
         const configs = {
             destination: {
-                galleryTitle: 'Choisissez votre destination',
+                galleryTitle: 'PICK YOUR DESTINATION',
                 galleryClass: 'destination-gallery',
                 cardClass: 'destination-card',
                 eventType: 'destination:confirmed',

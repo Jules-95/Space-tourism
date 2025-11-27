@@ -32,13 +32,13 @@ class Gallery {
             destination: {
                 jsonFile: 'data/destinations.json',
                 eventType: 'destination:confirmed',
-                galleryTitle: 'Choisissez une destination',
+                galleryTitle: 'PICK YOUR DESTINATION',
                 updateFunction: this.updateDestination.bind(this)
             },
             crew: {
                 jsonFile: 'data/crew.json',
                 eventType: 'crew:confirmed',
-                galleryTitle: 'Choisissez un membre d\'équipage',
+                galleryTitle: 'MEET YOUR CREW',
                 updateFunction: this.updateCrew.bind(this)
             },
             technology: {

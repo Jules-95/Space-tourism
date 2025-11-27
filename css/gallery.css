@@ -34,19 +34,14 @@
 
 /* Grille pour destinations - petites icônes circulaires */
 .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     max-width: 600px;
     margin: 2rem auto 0;
 }
 
-/* Grilles pour crew et techno - cartes plus grandes */
-.crew-gallery-grid,
-.techno-gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
 
-/* === Cartes d'Images (Destinations) === */
+
+/* === Cartes d'Images  === */
 .gallery-image-card,
 .modal-body .gallery-image-card {
     cursor: pointer;
@@ -54,8 +49,8 @@
     border-radius: 50%;
     overflow: hidden;
     position: relative;
-    width: 80px !important;
-    height: 80px !important;
+    width: 200px !important;
+    height: 200px !important;
     border: 2px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
     display: flex;
@@ -66,8 +61,8 @@
 
 .gallery-image-card img,
 .modal-body .gallery-image-card img {
-    width: 60px !important;
-    height: 60px !important;
+    width: 180px !important;
+    height: 180px !important;
     object-fit: cover;
     transition: all 0.3s ease;
     display: block;
