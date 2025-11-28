@@ -267,8 +267,8 @@
 }
 
 .gallery-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: white;
+    background: white;
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .gallery-btn:focus {
@@ -281,6 +281,35 @@
 .techno-slider .gallery-btn {
     margin-top: 0.5rem;
     display: inline-block;
+}
+
+/* === Bouton Galerie Flottant === */
+#gallery-btn {
+    position: fixed;
+    top: 6rem;
+    right: 2rem;
+    background: rgba(255,255,255, 0.1);
+    border: 1px solid rgba(255,255,255, 0.3);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    z-index: 100;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+#gallery-btn:hover {
+    background: rgba(255,255,255, 0.2);
+    border-color: rgba(255,255,255, 0.5);
+    transform: translateY(-2px);
+}
+
+#gallery-btn:focus {
+    outline: 2px solid #4EA8DE;
+    outline-offset: 2px;
 }
 
 /* === Responsive Design === */
