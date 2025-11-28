@@ -312,6 +312,35 @@
     outline-offset: 2px;
 }
 
+/* === Bouton Diagramme Flottant === */
+#diagram-btn {
+    position: fixed;
+    top: 10rem;
+    right: 2rem;
+    background: rgba(255,255,255, 0.1);
+    border: 1px solid rgba(255,255,255, 0.3);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    z-index: 100;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+#diagram-btn:hover {
+    background: rgba(255,255,255, 0.2);
+    border-color: rgba(255,255,255, 0.5);
+    transform: translateY(-2px);
+}
+
+#diagram-btn:focus {
+    outline: 2px solid #4EA8DE;
+    outline-offset: 2px;
+}
+
 /* === Responsive Design === */
 @media (max-width: 768px) {
     .gallery {

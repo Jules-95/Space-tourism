@@ -6,10 +6,13 @@
     <meta name="author" content="Jules">
     <title>DESTINATION</title>
 
-    <link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/gallery.css">
+    
+    <!-- Diagram CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/c3@0.7.20/c3.min.css" rel="stylesheet">
 </head>
 
 
@@ -103,13 +106,23 @@
 	
 <!-- Gallery Button -->
 	<button id="gallery-btn">Galerie</button>
+	
+	<!-- Diagram Button -->
+	<button id="diagram-btn">Diagramme</button>
 
-	<!-- Modal Gallery Scripts - Simplified -->
+<!-- Modal Gallery Scripts - Simplified -->
 	<script src="js/classes/ModalManager.js"></script>
 	<script src="js/classes/DataManager.js"></script>
 	<script src="js/classes/UniversalRenderer.js"></script>
 	<script src="js/classes/Gallery.js"></script>
 	<script src="js/gallery-init.js"></script>
+	
+	<!-- Diagram System Classes -->
+	<script src="js/classes/DiagramModalManager.js"></script>
+	<script src="js/classes/DiagramDataManager.js"></script>
+	<script src="js/classes/DiagramRenderer.js"></script>
+	<script src="js/classes/DiagramManager.js"></script>
+	<script src="js/diagram-init.js"></script>
 </body>
 
 
