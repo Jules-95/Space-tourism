@@ -50,6 +50,118 @@ a {
   color: #fff;
 }
 
+/* Moon 3D Button */
+.moon-3d-button {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 2rem;
+  color: white;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.moon-3d-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.moon-3d-button:active {
+  transform: translateY(0);
+}
+
+/* Moon 3D Modal */
+#moon-3d-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#moon-3d-modal.active {
+  opacity: 1;
+}
+
+.modal-3d-content {
+  background: linear-gradient(135deg, #0B0D17 0%, #1a1f3a 100%);
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 900px;
+  height: 80vh;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-3d-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-3d-header h3 {
+  color: white;
+  font-family: 'Bellefair', serif;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.modal-3d-close {
+  background: none;
+  border: none;
+  color: #D0D6F9;
+  font-size: 2.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.modal-3d-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.moon-3d-container {
+  flex: 1;
+  width: 100%;
+  position: relative;
+}
+
+.controls-info {
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-size: 0.9rem;
+  color: #D0D6F9;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
 /****************************
  TYPOGRAPHY
 ****************************/

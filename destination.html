@@ -1,86 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	 <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Jules">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Jules" />
     <title>DESTINATION</title>
 
-    <link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/helpers.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/gallery.css">
-</head>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/helpers.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/gallery.css" />
+  </head>
 
+  <body class="page-destination">
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo">
+          <img src="img/logo.svg" alt="Space Tourism logo" />
+        </a>
 
-<body class="page-destination">
-	<header>
-		<div class="container">
-			<a href="index.html" class="logo">
-                <img src="img/logo.svg" alt="Space Tourism logo">
-            </a>
+        <button
+          class="burger"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          aria-controls="menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-			<button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+        <nav class="nav" id="menu">
+          <ul class="nav-liste">
+            <li class="nav-item">
+              <a href="index.html"><span>00</span>HOME</a>
+            </li>
+            <li class="nav-item">
+              <a href="destination.html" class="active"
+                ><span>01</span>DESTINATION</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="crew.html"><span>02</span>CREW</a>
+            </li>
+            <li class="nav-item">
+              <a href="techno.html"><span>03</span>TECHNOLOGY</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-			<nav class="nav" id="menu">
-				<ul class="nav-liste">
-					<li class="nav-item"><a href="index.html"><span>00</span>HOME</a></li>
-					<li class="nav-item"><a href="destination.html" class="active"><span>01</span>DESTINATION</a></li>
-					<li class="nav-item"><a href="crew.html"><span>02</span>CREW</a></li>
-					<li class="nav-item"><a href="techno.html"><span>03</span>TECHNOLOGY</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
+    <p class="pre-title container"><span>01</span>PICK YOUR DESTINATION</p>
 
-        <p class="pre-title container"><span>01</span>PICK YOUR DESTINATION</p>
+    <main class="container">
+      <section class="contenu-destination">
+        <picture class="img-lune">
+          <img src="img/moon.png" alt="image-lune" />
+        </picture>
+        <button id="moon-3d-btn" class="moon-3d-button">Moon 3D</button>
 
-	<main class="container">
+        <div class="txt-destination">
+          <nav class="nav-destination">
+            <ul class="liste-destination">
+              <li class="item-destination">
+                <button class="desti-btn active">MOON</button>
+              </li>
 
-		<section class="contenu-destination">
-			
-			<picture class="img-lune">
-				<img src="img/moon.png" alt="image-lune">
-			</picture>
+              <li class="item-destination">
+                <button class="desti-btn">MARS</button>
+              </li>
 
-			<div class="txt-destination">
-				<nav class="nav-destination">
-					<ul class="liste-destination">
-						<li class="item-destination"><button class="desti-btn active">MOON</button></li>
+              <li class="item-destination">
+                <button class="desti-btn">EUROPA</button>
+              </li>
 
-						<li class="item-destination"><button class="desti-btn">MARS</button></li>
+              <li class="item-destination">
+                <button class="desti-btn">TITAN</button>
+              </li>
+            </ul>
+          </nav>
+          <h2>MOON</h2>
+          <p>
+            See our planet as you’ve never seen it before. A perfect relaxing
+            trip away to help regain perspective and come back refreshed. While
+            you’re there, take in some history by visiting the Luna 2 and Apollo
+            11 landing sites.
+          </p>
 
-						<li class="item-destination"><button class="desti-btn">EUROPA</button></li>
+          <div class="description-destination">
+            <ul>
+              <li>AVG. DISTANCE</li>
+              <li>384,400 KM</li>
+            </ul>
+            <ul>
+              <li>EST. TRAVEL TIME</li>
+              <li>3 DAYS</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
 
-						<li class="item-destination"><button class="desti-btn">TITAN</button></li>
-					</ul>
-				</nav>
-				<h2>MOON</h2>
-				<p>See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.</p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/destination.js"></script>
+    <script src="js/moon-3d.js"></script>
 
-				<div class="description-destination">
-					<ul>
-						<li>AVG. DISTANCE</li>
-						<li>384,400 KM</li>
-					</ul>
-					<ul>
-						<li>EST. TRAVEL TIME</li>
-						<li>3 DAYS</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-			
-	</main>
-
-<script src="js/nav.js"></script>
-	<script src="js/destination.js"></script>
-	
-	<!-- 
+    <!-- 
 	 * AJOUTS GALERIE MODALE - Branche feature/nouvelles-fonctionnalites
 	 * 
 	 * 1. BOUTON GALERIE: Bouton flottant qui ouvre la modal
@@ -100,28 +129,31 @@
 	 *    - Clic sur icône → met à jour page principale
 	 *    - Communication via événements personnalisés
 	-->
-	
-	<!-- Gallery Button -->
-	<button id="gallery-btn" style="
-	    position: fixed;
-	    bottom: 2rem;
-	    right: 2rem;
-	    background: rgba(255,255,255, 0.1);
-	    border: 1px solid rgba(255,255,255, 0.3);
-	    color: white;
-	    padding: 1rem 2rem;
-	    border-radius: 2rem;
-	    cursor: pointer;
-	    z-index: 100;
-	">Galerie</button>
 
-	<!-- Modal Gallery Scripts - Simplified -->
-	<script src="js/classes/ModalManager.js"></script>
-	<script src="js/classes/DataManager.js"></script>
-	<script src="js/classes/UniversalRenderer.js"></script>
-	<script src="js/classes/Gallery.js"></script>
-	<script src="js/gallery-init.js"></script>
-</body>
+    <!-- Gallery Button -->
+    <button
+      id="gallery-btn"
+      style="
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 2rem;
+        cursor: pointer;
+        z-index: 100;
+      "
+    >
+      Galerie
+    </button>
 
-
+    <!-- Modal Gallery Scripts - Simplified -->
+    <script src="js/classes/ModalManager.js"></script>
+    <script src="js/classes/DataManager.js"></script>
+    <script src="js/classes/UniversalRenderer.js"></script>
+    <script src="js/classes/Gallery.js"></script>
+    <script src="js/gallery-init.js"></script>
+  </body>
 </html>

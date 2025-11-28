@@ -5,6 +5,7 @@ const description = document.querySelector(".txt-destination p");
 const image = document.querySelector(".img-lune img");
 const distance = document.querySelector(".description-destination ul:nth-child(1) li:nth-child(2)");
 const travelTime = document.querySelector(".description-destination ul:nth-child(2) li:nth-child(2)");
+const moon3DBtn = document.getElementById("moon-3d-btn");
 
 // Données des destinations
 const destinations = [
@@ -58,6 +59,13 @@ buttons.forEach((btn, index) => {
       image.src = dest.img;
       distance.textContent = dest.distance;
       travelTime.textContent = dest.time;
+      
+      // Afficher/masquer le bouton Moon 3D
+      if (dest.name === "MOON" && moon3DBtn) {
+        moon3DBtn.style.display = "block";
+      } else if (moon3DBtn) {
+        moon3DBtn.style.display = "none";
+      }
     }, 300);
     
     // Retirer la classe d'animation
@@ -65,4 +73,11 @@ buttons.forEach((btn, index) => {
       image.classList.remove("changing");
     }, 600);
   });
+});
+
+// Initialiser l'état du bouton Moon 3D au chargement
+document.addEventListener("DOMContentLoaded", () => {
+  if (moon3DBtn) {
+    moon3DBtn.style.display = "block"; // MOON est affiché par défaut
+  }
 });
