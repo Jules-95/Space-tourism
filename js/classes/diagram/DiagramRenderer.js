@@ -162,12 +162,22 @@ class DiagramRenderer {
                     const svg = d3.select(`#${containerId} svg`);
                     svg.style('background', 'transparent');
                     
+                    // Forcer la couleur bleue pour tous les textes
+                    svg.selectAll('text')
+                        .style('fill', '#4EA8DE')
+                        .style('stroke', 'none');
+                    
+                    // Centrer les textes de l'axe X sous les barres
+                    svg.selectAll('.c3-axis-x .tick text')
+                        .style('text-anchor', 'middle')
+                        .attr('x', 0);  // Réinitialiser la position X
+                    
                     // Style des axes
                     svg.selectAll('.domain')
-                        .style('stroke', 'rgba(255, 255, 255, 0.3)');
+                        .style('stroke', 'rgba(78, 168, 222, 0.3)');
                     
                     svg.selectAll('.tick line')
-                        .style('stroke', 'rgba(255, 255, 255, 0.3)');
+                        .style('stroke', 'rgba(78, 168, 222, 0.3)');
                 }
             }
         });
