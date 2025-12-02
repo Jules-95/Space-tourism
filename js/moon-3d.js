@@ -23,7 +23,7 @@ class Moon3DViewer {
         this.modal.innerHTML = `
             <div class="modal-3d-content">
                 <div class="modal-3d-header">
-                    <h3>Lune 3D</h3>
+                    <h3>MOON 3D</h3>
                     <button class="modal-3d-close">&times;</button>
                 </div>
                 <div id="moon-3d-container" class="moon-3d-container"></div>

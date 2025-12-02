@@ -52,7 +52,7 @@ a {
 
 /* Moon 3D Button */
 .moon-3d-button {
-  display: block;
+  display: none !important;
   margin: 1.5rem auto 0;
   padding: 0.8rem 2rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -1160,6 +1160,20 @@ body.page-techno {
   }
   body {
     background-image: url(../img/background-d.jpg); 
+  }
+
+  .moon-3d-button {
+    display: block !important;
+    position: fixed;
+    bottom: 7rem;
+    right: 2rem;
+    z-index: 100;
+    margin: 0;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 1.1rem;
   }
 
   .pre-title {
