@@ -62,9 +62,9 @@ buttons.forEach((btn, index) => {
       
       // Afficher/masquer le bouton Moon 3D
       if (dest.name === "MOON" && moon3DBtn) {
-        moon3DBtn.style.display = "block";
+        moon3DBtn.classList.add("visible");
       } else if (moon3DBtn) {
-        moon3DBtn.style.display = "none";
+        moon3DBtn.classList.remove("visible");
       }
     }, 300);
     
@@ -78,6 +78,6 @@ buttons.forEach((btn, index) => {
 // Initialiser l'état du bouton Moon 3D au chargement
 document.addEventListener("DOMContentLoaded", () => {
   if (moon3DBtn) {
-    moon3DBtn.style.display = "block"; // MOON est affiché par défaut
+    moon3DBtn.classList.add("visible"); // MOON est affiché par défaut
   }
 });

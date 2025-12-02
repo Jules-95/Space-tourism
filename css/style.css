@@ -1167,7 +1167,7 @@ body.page-techno {
     background-image: url(../img/background-d.jpg); 
   }
 
-  .moon-3d-button {
+  .moon-3d-button.visible {
     display: block !important;
     position: fixed;
     bottom: 7rem;
