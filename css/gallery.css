@@ -131,6 +131,7 @@
     width: 120px !important;
     height: 120px !important;
     object-fit: cover;
+    object-position: center;
     transition: all 0.3s ease;
     display: block;
     border-radius: 50%;
@@ -147,6 +148,17 @@
     letter-spacing: 0.2rem;
     text-transform: uppercase;
     line-height: 1.2;
+}
+
+/* Ajustements spécifiques pour les images de crew */
+.gallery-mission-specialist img,
+.modal-body .gallery-mission-specialist img {
+    object-position: center 1% !important;
+}
+
+.gallery-pilot img,
+.modal-body .gallery-pilot img {
+    object-position: center 10% !important;
 }
 
 .gallery-image-card:hover,

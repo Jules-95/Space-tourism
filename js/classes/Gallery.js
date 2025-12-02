@@ -169,16 +169,23 @@ constructor(type) {
         
         // Déterminer le label selon le type de galerie
         let label = '';
+        let roleClass = '';
         if (this.type === 'destination') {
             label = item.name.toUpperCase();
         } else if (this.type === 'crew') {
             label = item.role.toUpperCase();
+            // Ajouter une classe spécifique selon le rôle pour l'ajustement d'image
+            if (item.role === 'MISSION SPECIALIST') {
+                roleClass = 'gallery-mission-specialist';
+            } else if (item.role === 'PILOT') {
+                roleClass = 'gallery-pilot';
+            }
         } else if (this.type === 'technology') {
             label = item.name.toUpperCase();
         }
         
         return `
-            <div class="gallery-image-card" data-id="${itemId}">
+            <div class="gallery-image-card ${roleClass}" data-id="${itemId}">
                 <img src="${imageUrl}" alt="${this.type === 'destination' ? item.name : (item.name || item.role)}" loading="lazy">
                 <div class="gallery-item-label">${label}</div>
             </div>
