@@ -96,9 +96,14 @@
 
 /* Grille pour destinations - petites icônes circulaires */
 .gallery-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    max-width: 600px;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
     margin: 2rem auto 0;
+    flex-wrap: wrap;
 }
 
 
@@ -108,29 +113,40 @@
 .modal-body .gallery-image-card {
     cursor: pointer;
     transition: all 0.3s ease;
-    border-radius: 50%;
+    border-radius: 8px;
     overflow: hidden;
     position: relative;
     width: 200px !important;
-    height: 200px !important;
     border: 2px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 1rem;
     margin: 0 auto;
 }
 
 .gallery-image-card img,
 .modal-body .gallery-image-card img {
-    width: 180px !important;
-    height: 180px !important;
+    width: 120px !important;
+    height: 120px !important;
     object-fit: cover;
     transition: all 0.3s ease;
     display: block;
     border-radius: 50%;
     max-width: none !important;
     max-height: none !important;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-item-label {
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    color: #D0D6F9;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    line-height: 1.2;
 }
 
 .gallery-image-card:hover,

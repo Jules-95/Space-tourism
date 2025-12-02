@@ -57,8 +57,8 @@ class ModalManager {
             background: #0B0D17;
             padding: 2rem;
             border-radius: 1rem;
-            max-width: 600px;
-            max-height: 400px;
+            max-width: 90vw;
+            max-height: 60vh;
             overflow: auto;
             position: relative;
         `;

@@ -38,6 +38,14 @@ function detectPageType() {
  */
 async function initGallery(type) {
     try {
+        // Vérifier si on est en desktop (min-width: 1440px)
+        const isDesktop = window.matchMedia('(min-width: 1440px)').matches;
+        
+        if (!isDesktop) {
+            console.log('Gallery disabled on mobile/tablet');
+            return; // Ne pas initialiser la galerie sur mobile/tablette
+        }
+        
         console.log(`Initializing ${type} gallery...`);
         
         // Créer la galerie

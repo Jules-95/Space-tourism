@@ -68,6 +68,11 @@ a {
   text-transform: uppercase;
 }
 
+/* Gallery Button */
+.gallery-button {
+  display: none !important;
+}
+
 .moon-3d-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
@@ -1174,6 +1179,10 @@ body.page-techno {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     font-size: 1.1rem;
+  }
+
+  .gallery-button {
+    display: block !important;
   }
 
   .pre-title {
