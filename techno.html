@@ -6,9 +6,10 @@
     <meta name="author" content="Jules">
     <title>TECHNOLOGY</title>
 
-    <link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/helpers.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gallery.css">
 </head>
 
 
@@ -47,7 +48,7 @@
 
 		<section class="contenu-techno">
 
-			<div class="techno-slider">
+<div class="techno-slider">
                 <button class="techno-btn active" aria-label="Launch Vehicle">1</button>
                 <button class="techno-btn" aria-label="Spaceport">2</button>
                 <button class="techno-btn" aria-label="Space Capsule">3</button>
@@ -62,8 +63,27 @@
 
 	</main>
 
-	<script src="js/nav.js"></script>
+<script src="js/nav.js"></script>
 	<script src="js/techno.js"></script>
+	<script src="js/classes/ModalManager.js"></script>
+	<script src="js/classes/DataManager.js"></script>
+	<script src="js/classes/UniversalRenderer.js"></script>
+	<script src="js/classes/Gallery.js"></script>
+	<script src="js/gallery-init.js"></script>
+	
+	<!-- Gallery Button -->
+	<button id="gallery-btn" class="gallery-button" style="
+	    position: fixed;
+	    bottom: 2rem;
+	    right: 2rem;
+	    background: rgba(255,255,255, 0.1);
+	    border: 1px solid rgba(255,255,255, 0.3);
+	    color: white;
+	    padding: 1rem 2rem;
+	    border-radius: 2rem;
+	    cursor: pointer;
+	    z-index: 100;
+	">Galerie</button>
 </body>
 
 

@@ -5,6 +5,7 @@ const description = document.querySelector(".txt-destination p");
 const image = document.querySelector(".img-lune img");
 const distance = document.querySelector(".description-destination ul:nth-child(1) li:nth-child(2)");
 const travelTime = document.querySelector(".description-destination ul:nth-child(2) li:nth-child(2)");
+const moon3DBtn = document.getElementById("moon-3d-btn");
 
 // Données des destinations
 const destinations = [
@@ -45,12 +46,38 @@ buttons.forEach((btn, index) => {
     buttons.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
 
-    // 2️⃣ Changement du contenu
+    // 2️⃣ Animation 3D et changement du contenu
     const dest = destinations[index];
-    title.textContent = dest.name;
-    description.textContent = dest.text;
-    image.src = dest.img;
-    distance.textContent = dest.distance;
-    travelTime.textContent = dest.time;
+    
+    // Ajouter l'animation de changement
+    image.classList.add("changing");
+    
+    // Changer le contenu après le début de l'animation
+    setTimeout(() => {
+      title.textContent = dest.name;
+      description.textContent = dest.text;
+      image.src = dest.img;
+      distance.textContent = dest.distance;
+      travelTime.textContent = dest.time;
+      
+      // Afficher/masquer le bouton Moon 3D
+      if (dest.name === "MOON" && moon3DBtn) {
+        moon3DBtn.classList.add("visible");
+      } else if (moon3DBtn) {
+        moon3DBtn.classList.remove("visible");
+      }
+    }, 300);
+    
+    // Retirer la classe d'animation
+    setTimeout(() => {
+      image.classList.remove("changing");
+    }, 600);
   });
+});
+
+// Initialiser l'état du bouton Moon 3D au chargement
+document.addEventListener("DOMContentLoaded", () => {
+  if (moon3DBtn) {
+    moon3DBtn.classList.add("visible"); // MOON est affiché par défaut
+  }
 });
